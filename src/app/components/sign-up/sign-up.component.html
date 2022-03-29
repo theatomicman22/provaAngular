@@ -1,0 +1,35 @@
+<div class="container" [style.border]="'1px solid gray'" >
+
+    <h1 class="text-center">Sign up</h1>
+
+    <div class="alert alert-warning" role="alert" *ngIf="auth.error">
+        {{auth.error.error.error }}
+    </div>
+
+    <form #f="ngForm" (submit)="signUp(f)">
+
+        <div class="form-group " [style.margin-bottom]="'10px'" [style.margin-top]="'50px'">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" placeholder="email" name="email" [ngModel]="user?.email" required>
+        </div>
+
+        <div class="form-group" [style.margin-bottom]="'10px'">
+            <label for="password">Password</label>
+            <input type="password" placeholder="password" name="password" [ngModel]="user?.password" class="form-control" required >
+        </div>
+
+        <div class="form-group" [style.margin-bottom]="'10px'">
+            <label for="passwordConfirm">Confirm your password</label>
+            <input type="password" placeholder="Confirm password" name="passwordConfirm" [ngModel]="user?.password" class="form-control" required >
+        </div>
+
+
+        <button type="submit"  class="btn btn-primary" [disabled]="!f.valid" [style.margin-top]="'20px'">Sign up</button>
+
+        <div class="text-center">
+            <a routerLink="/login">Already have an account? Login.</a>
+        </div>
+
+    </form>
+
+</div>

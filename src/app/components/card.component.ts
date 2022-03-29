@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
-import { PokemonType } from '../pokemon';
+import { PokemonType } from '../pokemon-list/pokemon';
 
 
 @Component({

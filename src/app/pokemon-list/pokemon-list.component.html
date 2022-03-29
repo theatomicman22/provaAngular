@@ -1,0 +1,15 @@
+<div class="container">
+    <h1 class="text-center" id="title">
+      Pokemon 
+    </h1>
+    <div *ngFor="let pokemon of pokemons">
+      <app-card [title]="pokemon.name" [subHeading]="pokemon.detail.types">
+        <h3>Abilities</h3>
+        <ul><li *ngFor="let a of pokemon.detail.abilities">{{ a.ability.name | capitalize}}</li></ul>
+        <h3>Image</h3>
+        <img [src]="getImageUrl(pokemon)" width="100px" height="100px">
+      </app-card> 
+    </div>
+  
+    
+  <div>

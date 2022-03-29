@@ -16,6 +16,8 @@ import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { CapitalizePipe } from './shared/capitalize.pipe';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule } from '@angular/forms';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     CardComponent,
     CapitalizePipe,
-    LoginComponent
+    LoginComponent,
+    SignUpComponent,
+    PokemonListComponent
   ],
   imports: [
     BrowserModule,
