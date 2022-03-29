@@ -7,16 +7,33 @@ import { Router } from '@angular/router';
 })
 export class AuthServiceService {
 
+  user = 'admin';
+  password = 'admin';
+
   constructor(
     private http: HttpClient,
     private router: Router
   ) { }
 
   userToken:string;
-  error : HttpErrorResponse;
+  error : string;
 
   login(email:string, pass:string){
+
+    console.log(this.user, this.password);
   
+    if(email === this.user && pass === this.password)
+    {
+      this.userToken = 'token1234';
+      this.router.navigateByUrl('pokemon-list');
+      console.log('login')
+    }
+    else
+    {
+      this.error =  'Wrong user or password';
+      
+    }
+    /*
     const params= new HttpParams()
     .set('email',email)
     .set('password', pass);
@@ -29,10 +46,12 @@ export class AuthServiceService {
     
     err=> {this.error =err;}
 
-    );
+    );*/
   }
 
   signUp(email: string, pass:string){
+
+    /*
     const params= new HttpParams()
     .set('email',email)
     .set('password', pass);
@@ -45,7 +64,7 @@ export class AuthServiceService {
     
     err=> {this.error =err;}
 
-    );
+    );*/
   }
 
   logout(){

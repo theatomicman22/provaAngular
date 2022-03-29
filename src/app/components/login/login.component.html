@@ -3,7 +3,7 @@
         <h1 class="text-center">Login</h1>
    
         <div class="alert alert-warning" role="alert" *ngIf="auth.error">
-            {{auth.error.error.error }}
+            {{auth.error}}
         </div>
 
         <form #f="ngForm" (submit)="login(f)">
