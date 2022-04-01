@@ -2,24 +2,25 @@
     <h1 class="text-center" id="title">
       Pokemon 
     </h1>
-    <!--
+
+  <div *ngIf="pokemons">
       <div *ngFor="let pokemon of pokemons" >
-      <app-card [title]="pokemon.name" [subHeading]="pokemon.detail.types" *ngIf="pokemon.detail">
-        <h3>Abilities</h3>
-        <ul><li *ngFor="let a of pokemon.detail.abilities">{{ a.ability.name | capitalize}}</li></ul>
-        <h3>Image</h3>
-        <img [src]="getImageUrl(pokemon)" width="100px" height="100px">
-        <div (click)="deletePokemon(pokemon)"><fa-icon  [icon]="['fas','trash-can']" class="btn btn-primary"></fa-icon></div>
-      </app-card> 
-    </div>  
-  
+        <ng-container *ngIf="pokemon.detail | async  as detail ">
+          <app-card [title]="pokemon.name" [subHeading]="detail.types">
+            <h3>Abilities</h3>
+            
+              <ul><li *ngFor="let a of detail.abilities">{{ a.ability.name | capitalize}}</li></ul>
+              <img [src]="getImageUrl(detail)" width="100px" height="100px">
+              <div (click)="deletePokemon(pokemon)"><fa-icon  [icon]="['fas','trash-can']" class="btn btn-primary"></fa-icon></div>
+            
+          </app-card>
+        </ng-container>
+      </div>
+  </div>
 
     
-    <div *ngFor="let detail$ of details$  ">
-      <pre *ngIf="  (detail$ | async ) as detail  ">{{detail | json}} </pre>
-    </div>
-  -->
+    
 
-  <pre>{{details$ |async | json}}</pre>
+ 
 
 </div>

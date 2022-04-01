@@ -25,8 +25,9 @@ export class PokemonListComponent  {
 
     http.get<Result>("https://pokeapi.co/api/v2/pokemon?limit=20")
     .pipe(
-      map(res=> res.results),
-      map(res=> res.forEach(r=>this.details$ =http.get<Detail>(r.url))),
+      map(res=> this.pokemons=res.results),
+      map(res=> res.forEach((r,i)=>this.pokemons[i].detail =http.get<Detail>(r.url))),
+
       ).subscribe()
 
 
@@ -34,9 +35,9 @@ export class PokemonListComponent  {
 
 
 
-/*  getImageUrl( pokemon : Pokemon) : string{
-   // return pokemon.detail.sprites.other['official-artwork'].front_default;
-  }*/
+  getImageUrl( detail : Detail) : string{
+    return detail.sprites.other['official-artwork'].front_default;
+  }
 
   deletePokemon(pokemon:Pokemon){
    this.pokemons = this.pokemons.filter(p=> p.name !== pokemon.name);
