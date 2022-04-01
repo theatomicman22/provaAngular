@@ -1,7 +1,8 @@
+import { Observable } from "rxjs";
 export interface Pokemon{
     name: string;
     url: string;
-    detail:Detail;
+    detail?:Observable<Detail>;
 }
 export interface Result{
     count: number;
@@ -37,6 +38,7 @@ export interface Detail{
     abilities:AbilityDetail[];
     sprites:Sprites;
     types: PokemonType[];
+    name?:string;
 }
 
 export interface PokemonType{
@@ -47,4 +49,9 @@ export interface PokemonType{
         url: string;
     }
 
+}
+
+export interface PokemonWithDetails{
+    pokemon:Pokemon,
+    details:Detail
 }

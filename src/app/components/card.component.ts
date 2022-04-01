@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import { PokemonType } from '../pokemon-list/pokemon';
+
 
 
 @Component({
@@ -13,8 +14,7 @@ import { PokemonType } from '../pokemon-list/pokemon';
                       <h4><i *ngFor="let sh of subHeading">{{"&nbsp;&nbsp;"+ (sh.type.name | capitalize) + "&nbsp;&nbsp;"  }} </i></h4>
                        <div  class="mr-10"><fa-icon class="color-white" [icon]="open==='opened'? ['fas','angles-up'] : ['fas','angles-down']"></fa-icon></div>
                     </div>
-                    <div class="card-body" style="overflow: hidden"
-                    [@collapsable]="open"><ng-content></ng-content></div>
+                    <div class="card-body" [@collapsable]='open' style="overflow: hidden"><ng-content ></ng-content></div>
             </div>`
     ,
     animations:[
@@ -40,6 +40,8 @@ export class CardComponent{
     @Input() tooltipPlacement : string;
     @Input() collapsable : boolean;
     @Input() subHeading : PokemonType[];
+
+    
     open = 'opened';
     
     toggleOpen():void{
